@@ -4,7 +4,7 @@ import * as ExpoImagePicker from 'expo-image-picker'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import * as yup from 'yup'
 import DropDownPicker from 'react-native-dropdown-picker'
-import { create, getRestaurantCategories, percentage } from '../../api/RestaurantEndpoints'
+import { create, getRestaurantCategories } from '../../api/RestaurantEndpoints'
 import InputItem from '../../components/InputItem'
 import TextRegular from '../../components/TextRegular'
 import * as GlobalStyles from '../../styles/GlobalStyles'
@@ -14,7 +14,7 @@ import { showMessage } from 'react-native-flash-message'
 import { ErrorMessage, Formik } from 'formik'
 import TextError from '../../components/TextError'
 
-export default function CreateRestaurantScreen({ navigation }) {
+export default function CreateRestaurantScreen ({ navigation }) {
   const [open, setOpen] = useState(false)
   const [restaurantCategories, setRestaurantCategories] = useState([])
   const [backendErrors, setBackendErrors] = useState()
@@ -58,7 +58,7 @@ export default function CreateRestaurantScreen({ navigation }) {
   })
 
   useEffect(() => {
-    async function fetchRestaurantCategories() {
+    async function fetchRestaurantCategories () {
       try {
         const fetchedRestaurantCategories = await getRestaurantCategories()
         const fetchedRestaurantCategoriesReshaped = fetchedRestaurantCategories.map((e) => {
@@ -261,5 +261,5 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     alignSelf: 'center',
     marginTop: 5
-  },
+  }
 })

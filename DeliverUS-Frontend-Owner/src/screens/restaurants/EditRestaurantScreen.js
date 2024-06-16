@@ -20,8 +20,7 @@ import ConfirmationModal from '../../components/ConfirmationModal'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import TextSemiBold from '../../components/TextSemibold'
 
-
-export default function EditRestaurantScreen({ navigation, route }) {
+export default function EditRestaurantScreen ({ navigation, route }) {
   const [open, setOpen] = useState(false)
   const [restaurantCategories, setRestaurantCategories] = useState([])
   const [backendErrors, setBackendErrors] = useState()
@@ -73,7 +72,7 @@ export default function EditRestaurantScreen({ navigation, route }) {
   })
 
   useEffect(() => {
-    async function fetchRestaurantDetail() {
+    async function fetchRestaurantDetail () {
       try {
         const fetchedRestaurant = await getDetail(route.params.id)
         const preparedRestaurant = prepareEntityImages(fetchedRestaurant, ['logo', 'heroImage'])
@@ -93,7 +92,7 @@ export default function EditRestaurantScreen({ navigation, route }) {
   }, [route])
 
   useEffect(() => {
-    async function fetchRestaurantCategories() {
+    async function fetchRestaurantCategories () {
       try {
         const fetchedRestaurantCategories = await getRestaurantCategories()
         const fetchedRestaurantCategoriesReshaped = fetchedRestaurantCategories.map((e) => {
@@ -143,7 +142,7 @@ export default function EditRestaurantScreen({ navigation, route }) {
   const updateRestaurant = async (values) => {
     setBackendErrors([])
     // Solution
-    if (values.percentage != 0 && !percentageShowDialog) {
+    if (values.percentage !== 0 && !percentageShowDialog) {
       setPercentageShowDialog(true)
     } else {
       // Solution
@@ -202,9 +201,8 @@ export default function EditRestaurantScreen({ navigation, route }) {
               {/* Solution */}
               <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 20, marginBottom: 10 }} >
                 <Pressable onPress={() => {
-                  let newPercentage = values.percentage + 0.5
-                  if (newPercentage < 5)
-                    setFieldValue('percentage', newPercentage)
+                  const newPercentage = values.percentage + 0.5
+                  if (newPercentage < 5) { setFieldValue('percentage', newPercentage) }
                 }}>
                   <MaterialCommunityIcons
                     name={'arrow-up-circle'}
@@ -216,9 +214,8 @@ export default function EditRestaurantScreen({ navigation, route }) {
                 <TextSemiBold>Porcentaje actual: <TextSemiBold textStyle={{ color: GlobalStyles.brandPrimary }}>{values.percentage.toFixed(1)}%</TextSemiBold></TextSemiBold>
 
                 <Pressable onPress={() => {
-                  let newPercentage = values.percentage - 0.5
-                  if (newPercentage > -5)
-                    setFieldValue('percentage', newPercentage)
+                  const newPercentage = values.percentage - 0.5
+                  if (newPercentage > -5) { setFieldValue('percentage', newPercentage) }
                 }}>
                   <MaterialCommunityIcons
                     name={'arrow-down-circle'}

@@ -1,5 +1,4 @@
 import { sequelizeSession, Restaurant, Product, RestaurantCategory, ProductCategory } from '../models/models.js'
-import Sequelize from 'sequelize'
 
 const index = async function (req, res) {
   try {
@@ -81,11 +80,11 @@ const update = async function (req, res) {
       where: {
         restaurantId: req.params.restaurantId
       }
-    });
+    })
 
     for (const product of productsToBeUpdated) {
-      const newPrice = product.basePrice + product.basePrice * (req.body.percentage / 100);
-      await product.update({ price: newPrice }, transaction);
+      const newPrice = product.basePrice + product.basePrice * (req.body.percentage / 100)
+      await product.update({ price: newPrice }, transaction)
     }
 
     await transaction.commit()
@@ -119,6 +118,6 @@ const RestaurantController = {
   create,
   show,
   update,
-  destroy,
+  destroy
 }
 export default RestaurantController

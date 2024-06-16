@@ -6,7 +6,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons'
 import TextSemiBold from './TextSemibold'
 import * as GlobalStyles from '../styles/GlobalStyles'
 import TextRegular from './TextRegular'
-export default function ConfirmationModal(props) {
+export default function ConfirmationModal (props) {
   return (
     <Modal
       presentationStyle='overFullScreen'
@@ -16,7 +16,7 @@ export default function ConfirmationModal(props) {
       onRequestClose={props.onCancel}>
       <View style={styles.centeredView}>
         <View style={styles.modalView}>
-          <TextSemiBold textStyle={{ fontSize: 15 }}>A corrective percentage will be applied to the price of this restaurant's products</TextSemiBold>
+          <TextSemiBold textStyle={{ fontSize: 15 }}>A corrective percentage will be applied to the price of this restaurant`s products</TextSemiBold>
           {props.children}
           <Pressable
             onPress={props.onCancel}

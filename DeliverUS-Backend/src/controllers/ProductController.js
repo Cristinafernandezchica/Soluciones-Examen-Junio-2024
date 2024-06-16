@@ -53,7 +53,7 @@ const update = async function (req, res) {
     // Solution: basePrice updated from new price property (given in the student's base project)
     req.body.basePrice = req.body.price
     await Product.update(req.body, { where: { id: req.params.productId } })
-    let updatedProduct = await Product.findByPk(req.params.productId)
+    const updatedProduct = await Product.findByPk(req.params.productId)
     res.json(updatedProduct)
   } catch (err) {
     res.status(500).send(err)

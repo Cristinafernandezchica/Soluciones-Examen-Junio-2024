@@ -12,7 +12,7 @@ import { showMessage } from 'react-native-flash-message'
 import DeleteModal from '../../components/DeleteModal'
 import restaurantLogo from '../../../assets/restaurantLogo.jpeg'
 
-export default function RestaurantsScreen({ navigation, route }) {
+export default function RestaurantsScreen ({ navigation, route }) {
   const [restaurants, setRestaurants] = useState([])
   const [restaurantToBeDeleted, setRestaurantToBeDeleted] = useState(null)
   const { loggedInUser } = useContext(AuthorizationContext)
@@ -46,7 +46,7 @@ export default function RestaurantsScreen({ navigation, route }) {
         {
           // Solution
         }
-        {item.percentage != 0 && <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end' }} >
+        {item.percentage !== 0 && <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end' }} >
           <TextSemiBold textStyle={{ color: item.percentage > 0 ? 'red' : 'green' }}>{item.percentage > 0 ? '¡Incremento de precios aplicados!' : '¡Descuentos aplicados!'}</TextSemiBold>
         </View>
         }
@@ -85,7 +85,6 @@ export default function RestaurantsScreen({ navigation, route }) {
       </ImageCard>
     )
   }
-
 
   const renderEmptyRestaurantsList = () => {
     return (
@@ -218,5 +217,5 @@ const styles = StyleSheet.create({
   emptyList: {
     textAlign: 'center',
     padding: 50
-  },
+  }
 })
